@@ -1,6 +1,14 @@
 // Begin Back-End Logic
 function getRecommendation(){
-  return $("#input-track").val();
+
+
+
+
+
+
+
+
+  return $("#input-track").val(); // PROTOTYPE
 }
 // End Back-End Logic
 
@@ -8,12 +16,6 @@ function getRecommendation(){
 function resetSelectElement() {
   $("#input-track option").attr("selected", false);
   $("#input-track option:first-child").attr("selected", true);
-}
-
-function recommendInJumbo() {
-  $("#recommendation").text($("select#input-track option:selected").text());
-  $(".initially-showing").hide();
-  $(".initially-hidden").show();
 }
 
 $("#btn-survey").click(function(){
@@ -49,6 +51,9 @@ $("#survey-form").submit(function(event){
     $("#recommendation").text($("select#input-track option:selected").text());
     $(".initially-showing").hide();
     $(".initially-hidden").show();
+  }else{
+    $(".initially-showing").show();
+    $(".initially-hidden").hide();
   }
 
   resetSelectElement();
