@@ -1,5 +1,7 @@
 // Begin Back-End Logic
-
+function getRecommendation(){
+  return $("#input-track").val();
+}
 // End Back-End Logic
 
 // Begin Front-End Logic
@@ -23,7 +25,18 @@ $("#btn-submit").click(function(){
 $("#survey-form").submit(function(event){
   event.preventDefault();
 
-  console.log($("#input-track").val());
+  var thisTrack = "java-android";
+  $("#" + thisTrack).addClass("highlight");
+
+  for(var i = 0; i < 5; i++){
+    if(document.getElementsByClassName("track")[i])
+      thisTrack = document.getElementsByClassName("track")[i].id;
+    if(thisTrack === getRecommendation()){
+      $("#" + thisTrack).addClass("highlight");
+    }else{
+      $("#" + thisTrack).removeClass("highlight");
+    }
+  }
 
   resetSelectElement();
 });
