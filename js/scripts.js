@@ -1,14 +1,22 @@
 // Begin Back-End Logic
 function getRecommendation(){
 
-
-
-
-
-
-
-
   return $("#input-track").val(); // PROTOTYPE
+}
+
+function setTrackNameForDisplay(parsedName){
+  if(parsedName === "css-design"){
+    parsedName = "CSS & Design";
+  }else if(parsedName === "ruby-rails"){
+    parsedName = "Ruby & Rails";
+  }else if(parsedName === "csharp-dotnet"){
+    parsedName = "C# & .NET";
+  }else if(parsedName === "php-drupal"){
+    parsedName = "PHP & Drupal";
+  }else if(parsedName === "java-android"){
+    parsedName = "Java & Android";
+  }
+  return parsedName;
 }
 // End Back-End Logic
 
@@ -48,7 +56,7 @@ $("#survey-form").submit(function(event){
   }
 
   if($("select#input-track option:selected").val()){
-    $("#recommendation").text($("select#input-track option:selected").text());
+    $("#recommendation").text(setTrackNameForDisplay($("select#input-track option:selected").val()));
     $(".initially-showing").hide();
     $(".initially-hidden").show();
   }else{
