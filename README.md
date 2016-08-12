@@ -17,6 +17,10 @@ _OR_
 
 * _View on GitHub Pages at: https://zacharymatthewstearn.github.io/trackSuggester/_
 
+## Known Bugs
+
+Bootstrap grid not working as designed at sizes medium and higher.
+
 ### License
 
 Copyright (c) 2016 Zachary Matthewstearn
