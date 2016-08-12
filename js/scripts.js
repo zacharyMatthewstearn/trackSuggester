@@ -10,6 +10,12 @@ function resetSelectElement() {
   $("#input-track option:first-child").attr("selected", true);
 }
 
+function recommendInJumbo() {
+  $("#recommendation").text($("select#input-track option:selected").text());
+  $(".initially-showing").hide();
+  $(".initially-hidden").show();
+}
+
 $("#btn-survey").click(function(){
   $("#survey").show();
 });
@@ -25,17 +31,24 @@ $("#btn-submit").click(function(){
 $("#survey-form").submit(function(event){
   event.preventDefault();
 
-  var thisTrack = "java-android";
+  var thisTrack;
   $("#" + thisTrack).addClass("highlight");
 
   for(var i = 0; i < 5; i++){
-    if(document.getElementsByClassName("track")[i])
+    if(document.getElementsByClassName("track")[i]) {
       thisTrack = document.getElementsByClassName("track")[i].id;
+    }
     if(thisTrack === getRecommendation()){
       $("#" + thisTrack).addClass("highlight");
     }else{
       $("#" + thisTrack).removeClass("highlight");
     }
+  }
+
+  if($("select#input-track option:selected").val()){
+    $("#recommendation").text($("select#input-track option:selected").text());
+    $(".initially-showing").hide();
+    $(".initially-hidden").show();
   }
 
   resetSelectElement();

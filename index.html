@@ -13,13 +13,18 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Epicodus Tracks</h1>
-        <h2>
+        <h2 class="initially-showing">
           <small>
             Which one is right for you?<br>
             Take our survey to find out!
           </small>
         </h2>
-
+        <h2 class="initially-hidden">
+          <small>
+            We recommend:<br>
+            <span id="recommendation"></span>
+          </small>
+        </h2>
         <a id="btn-survey" class="btn btn-primary" href="#survey" data-toggle="modal">Survey</a>
       </div>
     </div>
@@ -107,7 +112,7 @@
               <div class="form-group">
                 <label for="input-track">Choose a track below:</label>
                 <select id="input-track" class="form-control">
-                  <option disabled selected>--</option>
+                  <option value="" disabled selected>--</option>
                   <option value="css-design">CSS & Design</option>
                   <option value="ruby-rails">Ruby & Rails</option>
                   <option value="csharp-dotnet">C# & .NET</option>
