@@ -95,14 +95,23 @@
             <h3 class="modal-title" id="myModalLabel">Modal title</h3>
           </div>
           <div class="modal-body">
-            <form>
-              BODY
+            <form id="survey-form">
+              <div class="form-group">
+                <label for="input-track">Choose a track below:</label>
+                <select id="input-track" class="form-control">
+                  <option disabled selected>--</option>
+                  <option>CSS & Design</option>
+                  <option>Ruby & Rails</option>
+                  <option>C# & .NET</option>
+                  <option>PHP & Drupal</option>
+                  <option>Java & Android</option>
+                </select>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="reset" class="btn btn-secondary">Clear</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+            <button id="btn-clear" class="btn btn-secondary" type="reset">Clear</button>
+            <button id="btn-submit" class="btn btn-primary" type="button" data-dismiss="modal">Submit</button>
           </div>
         </div>
       </div>
