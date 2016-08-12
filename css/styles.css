@@ -72,7 +72,7 @@ h3 small {
 }
 
 div.highlight div {
-  background-color: rgba(255, 204, 0, 0.5);
+  background-color: rgb(255, 191, 0);
 }
 div.highlight div:first-child {
   border-radius: 80px 0 0 80px;
