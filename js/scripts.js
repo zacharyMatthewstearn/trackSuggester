@@ -21,11 +21,6 @@ function setTrackNameForDisplay(parsedName){
 // End Back-End Logic
 
 // Begin Front-End Logic
-function resetSelectElement() {
-  $("#input-track option").attr("selected", false);
-  $("#input-track option:first-child").attr("selected", true);
-}
-
 $("#btn-survey").click(function(){
   $("#survey").show();
 });
@@ -64,6 +59,7 @@ $("#survey-form").submit(function(event){
     $(".initially-hidden").hide();
   }
 
-  resetSelectElement();
+  $("#input-track option").attr("selected", false);
+  $("#input-track option:first-child").attr("selected", true);
 });
 // End Front-End Logic
