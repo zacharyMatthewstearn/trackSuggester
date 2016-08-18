@@ -1,83 +1,80 @@
+
 ////////// Begin Back-End Logic
-// function getRecommendation(){
-//
-//   return $("#input-track").val(); // PROTOTYPE
-// }
-//
-// function setTrackNameForDisplay(parsedName){
-//   if(parsedName === "css-design"){
-//     parsedName = "CSS & Design";
-//   }else if(parsedName === "ruby-rails"){
-//     parsedName = "Ruby & Rails";
-//   }else if(parsedName === "csharp-dotnet"){
-//     parsedName = "C# & .NET";
-//   }else if(parsedName === "php-drupal"){
-//     parsedName = "PHP & Drupal";
-//   }else if(parsedName === "java-android"){
-//     parsedName = "Java & Android";
-//   }
-//   return parsedName;
-// }
+
+function setTrackNameForDisplay(parsedName){
+  if(parsedName === "css-design"){
+    parsedName = "CSS & Design";
+  }else if(parsedName === "ruby-rails"){
+    parsedName = "Ruby & Rails";
+  }else if(parsedName === "csharp-dotnet"){
+    parsedName = "C# & .NET";
+  }else if(parsedName === "php-drupal"){
+    parsedName = "PHP & Drupal";
+  }else if(parsedName === "java-android"){
+    parsedName = "Java & Android";
+  }
+  return parsedName;
+}
+
+function determineSuggestion (answers) {
+  var baseForAnswer = Math.floor(Math.random() * 5) + 1;
+  switch (baseForAnswer) {
+    case 1:
+      return answers[0];
+    case 2:
+      return answers[1];
+    case 3:
+      return answers[2];
+    case 4:
+      return answers[3];
+    case 5:
+      return answers[4];
+    default:
+      return null;
+  }
+}
+
+
 
 ////////// Front-End Logic
 
+function collectInputs(_numOfQs){
+  var answers = [];
+  for(var i = 1; i <= _numOfQs; i++){
+    answers.push($("#input-q" + i + " option:selected").val());
+  }
+  return answers;
+}
+
+function displaySuggestionText(_suggestion) {
+  if(_suggestion){
+    $("#recommendation").text(setTrackNameForDisplay(_suggestion));
+    $(".initially-showing").hide();
+    $(".initially-hidden").show();
+  }else{
+    $(".initially-showing").show();
+    $(".initially-hidden").hide();
+  }
+}
+
+function highlightSuggestion(_suggestion) {
+  for(var i = 0; i < 5; i++){
+    if(document.getElementsByClassName("track")[i]) {
+      thisTrack = document.getElementsByClassName("track")[i].id;
+    }
+    if(thisTrack === _suggestion){
+      $("#" + thisTrack).addClass("highlight");
+    }else{
+      $("#" + thisTrack).removeClass("highlight");
+    }
+  }
+}
+
 $("form#survey-form").submit(function(event){
   event.preventDefault();
-  var inputQ1 = $("#input-q1 option:selected").val();
-  var inputQ2 = $("#input-q2 option:selected").val();
-  var inputQ3 = $("#input-q3 option:selected").val();
-  var inputQ4 = $("#input-q4 option:selected").val();
-  var inputQ5 = $("#input-q5 option:selected").val();
+  var inputs = collectInputs(5);
+  var suggestion = determineSuggestion(inputs);
+  displaySuggestionText(suggestion);
+  highlightSuggestion(suggestion);
   $("#survey").modal("hide");
-  console.log(inputQ1);
-  console.log(inputQ2);
-  console.log(inputQ3);
-  console.log(inputQ4);
-  console.log(inputQ5);
 });
-
-
-
-
-
-// $("#btn-survey").click(function(){
-//   $("#survey").show();
-// });
-//
-// $("#btn-clear").click(function(){
-//   resetSelectElement();
-// });
-//
-// $("#btn-submit").click(function(){
-//   $("#survey-form").trigger("submit");
-// });
-//
-// $("#survey-form").submit(function(event){
-//   event.preventDefault();
-//
-//   var thisTrack;
-//   $("#" + thisTrack).addClass("highlight");
-//
-//   for(var i = 0; i < 5; i++){
-//     if(document.getElementsByClassName("track")[i]) {
-//       thisTrack = document.getElementsByClassName("track")[i].id;
-//     }
-//     if(thisTrack === getRecommendation()){
-//       $("#" + thisTrack).addClass("highlight");
-//     }else{
-//       $("#" + thisTrack).removeClass("highlight");
-//     }
-//   }
-//
-//   if($("select#input-track option:selected").val()){
-//     $("#recommendation").text(setTrackNameForDisplay($("select#input-track option:selected").val()));
-//     $(".initially-showing").hide();
-//     $(".initially-hidden").show();
-//   }else{
-//     $(".initially-showing").show();
-//     $(".initially-hidden").hide();
-//   }
-//
-//   $("#input-track option").attr("selected", false);
-//   $("#input-track option:first-child").attr("selected", true);
-// });
