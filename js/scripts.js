@@ -2,16 +2,19 @@
 ////////// Begin Back-End Logic
 
 function setTrackNameForDisplay(parsedName){
-  if(parsedName === "css-design"){
-    parsedName = "CSS & Design";
-  }else if(parsedName === "ruby-rails"){
-    parsedName = "Ruby & Rails";
-  }else if(parsedName === "csharp-dotnet"){
-    parsedName = "C# & .NET";
-  }else if(parsedName === "php-drupal"){
-    parsedName = "PHP & Drupal";
-  }else if(parsedName === "java-android"){
-    parsedName = "Java & Android";
+  switch(parsedName){
+  case "css-design":
+    return "CSS & Design";
+  case "ruby-rails":
+    return "Ruby & Rails";
+  case "csharp-dotnet":
+    return "C# & .NET";
+  case "php-drupal":
+    return "PHP & Drupal";
+  case "java-android":
+    return "Java & Android";
+  default:
+    return null;
   }
   return parsedName;
 }
@@ -58,6 +61,7 @@ function displaySuggestionText(_suggestion) {
 }
 
 function highlightSuggestion(_suggestion) {
+  var thisTrack = "";
   for(var i = 0; i < 5; i++){
     if(document.getElementsByClassName("track")[i]) {
       thisTrack = document.getElementsByClassName("track")[i].id;
