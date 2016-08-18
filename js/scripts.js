@@ -1,8 +1,30 @@
 
 ////////// Begin Back-End Logic
 
-function setTrackNameForDisplay(parsedName){
-  switch(parsedName){
+function determineSuggestion (_answers) {
+  if(Math.floor(Math.random() * 2)){
+    switch (Math.floor(Math.random() * 5) + 1) {
+      case 1:
+        return _answers[0];
+      case 2:
+        return _answers[1];
+      case 3:
+        return _answers[2];
+      case 4:
+        return _answers[3];
+      case 5:
+        return _answers[4];
+      default:
+        return null;
+    }
+  }
+  else {
+    return "Reply hazy try again";
+  }
+}
+
+function setTrackNameForDisplay(_parsedName){
+  switch(_parsedName){
   case "css-design":
     return "CSS & Design";
   case "ruby-rails":
@@ -14,26 +36,7 @@ function setTrackNameForDisplay(parsedName){
   case "java-android":
     return "Java & Android";
   default:
-    return null;
-  }
-  return parsedName;
-}
-
-function determineSuggestion (answers) {
-  var baseForAnswer = Math.floor(Math.random() * 5) + 1;
-  switch (baseForAnswer) {
-    case 1:
-      return answers[0];
-    case 2:
-      return answers[1];
-    case 3:
-      return answers[2];
-    case 4:
-      return answers[3];
-    case 5:
-      return answers[4];
-    default:
-      return null;
+    return _parsedName;
   }
 }
 
